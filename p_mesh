@@ -1,0 +1,40 @@
+import bpy
+import math as m
+
+
+sin = m.sin
+cos = m.cos
+tan = m.tan
+
+listspacex = []
+
+u = 0.
+v = 0.
+
+
+for a in range(0,100):
+        
+    x = 1.
+    y = 1.
+    z = 0.
+    u += 1.
+    
+    coord = [x , y , z]
+    listspacex.extend(coord)
+            
+    
+
+
+    
+verts = [(listspacex[0],listspacex[1],listspacex[2])]
+
+edges = []    
+faces = []
+
+    
+meshdata = bpy.data.meshes.new("shapedata")
+meshdata.from_pydata(verts, edges, faces)
+
+mesh_obj = bpy.data.objects.new("shapedata", meshdata)
+
+bpy.context.collection.link(mesh_obj)
